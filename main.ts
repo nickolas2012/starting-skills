@@ -20,7 +20,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile.startEffect(effects.fire)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-	
+    scene.cameraShake(4, 500)
+    otherSprite.destroy(effects.fire, 1000)
+    info.changeLifeBy(-1)
 })
 let projectile2: Sprite = null
 let projectile: Sprite = null
