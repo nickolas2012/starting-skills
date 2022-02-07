@@ -19,6 +19,11 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         `, ship, 0, -100)
     projectile.startEffect(effects.fire)
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    sprite.destroy()
+    otherSprite.destroy(effects.clouds, 500)
+    info.changeScoreBy(1)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     scene.cameraShake(4, 500)
     otherSprite.destroy(effects.fire, 1000)
